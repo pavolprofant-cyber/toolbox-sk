@@ -2,196 +2,130 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToolBox SK – Online nástroje zadarmo</title>
-  <meta name="description" content="Bezplatné online nástroje v slovenčine. Kalkulačky, počítadlo slov a ďalšie užitočné pomôcky.">
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b1020;
-      color: #f4f7ff;
-    }
-    header {
-      padding: 24px 7%;
-      border-bottom: 1px solid #27314a;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-    }
-    .logo { font-size: 25px; font-weight: bold; }
-    .logo span { color: #60a5fa; }
-    .hero {
-      text-align: center;
-      padding: 65px 20px 35px;
-    }
-    .hero h1 { font-size: clamp(32px, 6vw, 52px); margin-bottom: 12px; }
-    .hero p { color: #b6c2dc; font-size: 17px; }
-    .search {
-      width: min(500px, 100%);
-      padding: 15px;
-      margin-top: 18px;
-      border: 1px solid #34415f;
-      border-radius: 12px;
-      background: #151e33;
-      color: white;
-      font-size: 16px;
-    }
-    main { max-width: 1050px; margin: auto; padding: 20px; }
-    .tools {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-    }
-    .tool {
-      background: #151e33;
-      border: 1px solid #293651;
-      border-radius: 16px;
-      padding: 23px;
-    }
-    .tool h2 { margin-top: 0; font-size: 20px; }
-    .tool p { color: #b6c2dc; line-height: 1.5; }
-    input, textarea {
-      width: 100%;
-      padding: 11px;
-      margin: 6px 0;
-      border: 1px solid #34415f;
-      border-radius: 8px;
-      background: #0b1020;
-      color: white;
-      font-size: 15px;
-    }
-    textarea { min-height: 95px; resize: vertical; }
-    button {
-      border: 0;
-      border-radius: 8px;
-      padding: 11px 15px;
-      background: #3b82f6;
-      color: white;
-      cursor: pointer;
-      font-size: 15px;
-      margin-top: 6px;
-    }
-    button:hover { background: #2563eb; }
-    .result { color: #93c5fd; overflow-wrap: anywhere; }
-    footer {
-      text-align: center;
-      padding: 35px 15px;
-      color: #9ba9c5;
-    }
-    [hidden] { display: none !important; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolBox SK | Online nástroje zadarmo</title>
+<meta name="description" content="Praktické online nástroje zadarmo v slovenčine.">
+<style>
+:root{--bg:#080d1b;--card:#111a2e;--blue:#5595ff;--text:#f4f7ff;--muted:#a6b3cc;--border:#253450}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#15284b 0,#080d1b 55%);color:var(--text);font-family:Arial,sans-serif;min-height:100vh}
+header{display:flex;align-items:center;justify-content:space-between;padding:22px max(5%,calc((100% - 1120px)/2));border-bottom:1px solid var(--border);background:#080d1bcc;gap:16px}
+.logo{font-size:25px;font-weight:800;letter-spacing:-1px}.logo span{color:var(--blue)}
+.pill{border:1px solid #31507e;border-radius:30px;padding:9px 13px;color:#c7dcff;font-size:13px}
+.hero{text-align:center;padding:75px 20px 45px}
+.tag{display:inline-block;padding:8px 13px;border:1px solid #31507e;background:#142444;border-radius:30px;color:#a8cbff;font-size:13px}
+h1{font-size:clamp(35px,6vw,60px);letter-spacing:-2px;line-height:1.08;margin:23px auto 16px;max-width:800px}
+h1 span{color:var(--blue)}
+.hero p{max-width:570px;margin:0 auto;color:var(--muted);line-height:1.7;font-size:17px}
+.search-wrap{max-width:540px;margin:28px auto 0;position:relative}
+.search-wrap input{width:100%;padding:17px 20px 17px 48px;background:#111a2e;border:1px solid #354767;border-radius:14px;color:white;font-size:16px;outline:none}
+.search-wrap input:focus,input:focus,textarea:focus{border-color:var(--blue)}
+.search-icon{position:absolute;left:18px;top:16px;color:#91a9d2}
+main{max-width:1120px;margin:auto;padding:25px 22px 70px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:10px 0 22px}
+.section-head h2{font-size:25px;margin:0 0 7px}.section-head p{margin:0;color:var(--muted);font-size:14px}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:18px}
+.tool{background:linear-gradient(145deg,#151f35,#0e1729);border:1px solid var(--border);border-radius:19px;padding:23px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.tool:hover{transform:translateY(-4px);border-color:#456aa2;box-shadow:0 12px 30px #0003}
+.tool-icon{width:46px;height:46px;display:grid;place-items:center;background:#1c3153;border-radius:13px;font-size:23px;margin-bottom:18px}
+.tool h3{font-size:19px;margin:0 0 9px}.tool p{color:var(--muted);font-size:14px;line-height:1.6;min-height:43px}
+input,textarea{width:100%;padding:12px;margin:5px 0;background:#080f20;border:1px solid #2b3b57;border-radius:9px;color:white;font-size:15px;outline:none}
+textarea{min-height:95px;resize:vertical}
+button{width:100%;border:0;border-radius:10px;padding:12px 15px;background:linear-gradient(100deg,#3d7df1,#579fff);color:white;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px;transition:filter .2s}
+button:hover{filter:brightness(1.12)}
+.result{color:#91bcff!important;overflow-wrap:anywhere;font-weight:600}
+.empty{display:none;color:var(--muted);padding:20px 0}
+footer{border-top:1px solid var(--border);text-align:center;padding:27px 15px;color:var(--muted);font-size:13px}
+[hidden]{display:none!important}
+@media(max-width:600px){header{padding:18px 5%}.logo{font-size:22px}.pill{font-size:11px;padding:8px}.hero{padding-top:55px}main{padding-inline:16px}.section-head h2{font-size:22px}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo">ToolBox <span>SK</span></div>
-    <div>Online nástroje zadarmo</div>
-  </header>
-
-  <section class="hero">
-    <h1>Všetky nástroje na jednom mieste.</h1>
-    <p>Jednoduché a bezplatné pomôcky v slovenčine.</p>
-    <input class="search" id="search" placeholder="Hľadať nástroj..." aria-label="Hľadať nástroj">
-  </section>
-
-  <main>
-    <div class="tools" id="tools">
-      <section class="tool" data-name="percentová kalkulačka percentá">
-        <h2>🧮 Percentová kalkulačka</h2>
-        <p>Vypočítaj percentá z ľubovoľného čísla.</p>
-        <input id="number" type="number" placeholder="Zadaj číslo">
-        <input id="percent" type="number" placeholder="Zadaj percentá">
-        <button onclick="calculatePercent()">Vypočítať</button>
-        <p class="result" id="percentResult" aria-live="polite"></p>
-      </section>
-
-      <section class="tool" data-name="počítadlo slov znakov text">
-        <h2>📝 Počítadlo slov a znakov</h2>
-        <p>Zisti počet slov a znakov vo svojom texte.</p>
-        <textarea id="textInput" placeholder="Napíš alebo vlož svoj text..."></textarea>
-        <p class="result" id="textResult" aria-live="polite">Slová: 0 | Znaky: 0</p>
-      </section>
-
-      <section class="tool" data-name="kalkulačka priemer známok škola">
-        <h2>🎓 Priemer známok</h2>
-        <p>Zadaj známky oddelené čiarkou, napríklad 1, 2, 1, 3.</p>
-        <input id="grades" placeholder="1, 2, 1, 3">
-        <button onclick="calculateGrades()">Vypočítať priemer</button>
-        <p class="result" id="gradeResult" aria-live="polite"></p>
-      </section>
-
-      <section class="tool" data-name="generátor hesiel bezpečnosť">
-        <h2>🔐 Generátor hesiel</h2>
-        <p>Vytvor si náhodné heslo priamo v prehliadači.</p>
-        <input id="length" type="number" min="8" max="64" value="16" placeholder="Dĺžka hesla">
-        <button onclick="generatePassword()">Vytvoriť heslo</button>
-        <p class="result" id="passwordResult" aria-live="polite"></p>
-      </section>
-    </div>
-  </main>
-
-  <footer>© <span id="year"></span> ToolBox SK · Bezplatné online nástroje</footer>
-
-  <script>
-    function calculatePercent() {
-      const n = Number(document.getElementById('number').value);
-      const p = Number(document.getElementById('percent').value);
-      const result = document.getElementById('percentResult');
-      if (document.getElementById('number').value.trim() === '' ||
-          document.getElementById('percent').value.trim() === '') {
-        result.textContent = 'Vyplň obe čísla.';
-        return;
-      }
-      result.textContent = p + ' % z čísla ' + n + ' = ' + (n * p / 100);
-    }
-
-    function updateTextCount() {
-      const text = document.getElementById('textInput').value;
-      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
-      document.getElementById('textResult').textContent =
-        'Slová: ' + words + ' | Znaky: ' + text.length;
-    }
-    document.getElementById('textInput').addEventListener('input', updateTextCount);
-
-    function calculateGrades() {
-      const raw = document.getElementById('grades').value.trim();
-      const result = document.getElementById('gradeResult');
-      const parts = raw.split(',').map(x => x.trim());
-      const grades = parts.map(Number);
-      if (!raw || parts.some(x => x === '' || !/^[1-5]$/.test(x))) {
-        result.textContent = 'Zadaj známky od 1 do 5 oddelené čiarkami.';
-        return;
-      }
-      result.textContent = 'Tvoj priemer je ' +
-        (grades.reduce((a, b) => a + b, 0) / grades.length).toFixed(2);
-    }
-
-    function generatePassword() {
-      const length = Number(document.getElementById('length').value);
-      const result = document.getElementById('passwordResult');
-      if (!Number.isInteger(length) || length < 8 || length > 64) {
-        result.textContent = 'Zadaj dĺžku od 8 do 64 znakov.';
-        return;
-      }
-      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*?';
-      const random = new Uint32Array(length);
-      crypto.getRandomValues(random);
-      result.textContent = Array.from(random, n => chars[n % chars.length]).join('');
-    }
-
-    document.getElementById('search').addEventListener('input', function() {
-      const query = this.value.toLocaleLowerCase('sk').trim();
-      document.querySelectorAll('.tool').forEach(tool => {
-        tool.hidden = !tool.dataset.name.includes(query) &&
-          !tool.querySelector('h2').textContent.toLocaleLowerCase('sk').includes(query);
-      });
-    });
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<header>
+  <div class="logo">ToolBox <span>SK.</span></div>
+  <div class="pill">✦ 100 % zadarmo</div>
+</header>
+<section class="hero">
+  <span class="tag">✦ Jednoduchšie každý deň</span>
+  <h1>Užitočné nástroje.<br><span>Na jednom mieste.</span></h1>
+  <p>Praktické online pomôcky v slovenčine. Bez inštalácie, bez zbytočností a zadarmo.</p>
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input id="search" placeholder="Čo potrebuješ vypočítať?" aria-label="Hľadať nástroj">
+  </div>
+</section>
+<main>
+  <div class="section-head">
+    <div><h2>Preskúmaj nástroje</h2><p>Vyber si nástroj a začni ho používať.</p></div>
+  </div>
+  <div class="tools" id="tools">
+    <section class="tool" data-name="percentová kalkulačka percentá čísla">
+      <div class="tool-icon">％</div><h3>Percentová kalkulačka</h3>
+      <p>Vypočítaj percentá z ľubovoľného čísla.</p>
+      <input id="number" type="number" placeholder="Zadaj číslo">
+      <input id="percent" type="number" placeholder="Zadaj percentá">
+      <button onclick="calculatePercent()">Vypočítať</button>
+      <p class="result" id="percentResult" aria-live="polite"></p>
+    </section>
+    <section class="tool" data-name="počítadlo slov znakov text">
+      <div class="tool-icon">✎</div><h3>Počítadlo slov a znakov</h3>
+      <p>Zisti počet slov a znakov v texte.</p>
+      <textarea id="textInput" placeholder="Napíš alebo vlož svoj text..."></textarea>
+      <p class="result" id="textResult" aria-live="polite">Slová: 0 · Znaky: 0</p>
+    </section>
+    <section class="tool" data-name="priemer známok škola kalkulačka">
+      <div class="tool-icon">▤</div><h3>Priemer známok</h3>
+      <p>Zisti priemer svojich známok.</p>
+      <input id="grades" placeholder="Napr. 1, 2, 1, 3">
+      <button onclick="calculateGrades()">Vypočítať priemer</button>
+      <p class="result" id="gradeResult" aria-live="polite"></p>
+    </section>
+    <section class="tool" data-name="generátor hesiel bezpečné heslo">
+      <div class="tool-icon">⌑</div><h3>Generátor hesiel</h3>
+      <p>Vytvor si náhodné heslo priamo v prehliadači.</p>
+      <input id="length" type="number" min="8" max="64" value="16" aria-label="Dĺžka hesla">
+      <button onclick="generatePassword()">Vytvoriť heslo</button>
+      <p class="result" id="passwordResult" aria-live="polite"></p>
+    </section>
+  </div>
+  <p id="empty" class="empty">Nenašli sa žiadne nástroje. Skús iné slovo.</p>
+</main>
+<footer>© <span id="year"></span> ToolBox SK · Vytvorené pre jednoduchší deň.</footer>
+<script>
+function calculatePercent(){
+ const a=document.getElementById('number').value,b=document.getElementById('percent').value,r=document.getElementById('percentResult');
+ if(a.trim()===''||b.trim()===''){r.textContent='Vyplň obe čísla.';return}
+ r.textContent=b+' % z čísla '+a+' = '+(Number(a)*Number(b)/100);
+}
+function updateTextCount(){
+ const t=document.getElementById('textInput').value,w=t.trim()?t.trim().split(/\s+/).length:0;
+ document.getElementById('textResult').textContent='Slová: '+w+' · Znaky: '+t.length;
+}
+document.getElementById('textInput').addEventListener('input',updateTextCount);
+function calculateGrades(){
+ const raw=document.getElementById('grades').value.trim(),r=document.getElementById('gradeResult'),p=raw.split(',').map(x=>x.trim());
+ if(!raw||p.some(x=>! /^[1-5]$/.test(x))){r.textContent='Zadaj známky od 1 do 5 oddelené čiarkami.';return}
+ r.textContent='Tvoj priemer je '+(p.map(Number).reduce((a,b)=>a+b,0)/p.length).toFixed(2);
+}
+function generatePassword(){
+ const l=Number(document.getElementById('length').value),r=document.getElementById('passwordResult');
+ if(!Number.isInteger(l)||l<8||l>64){r.textContent='Zadaj dĺžku od 8 do 64 znakov.';return}
+ const c='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*?',a=new Uint32Array(l);
+ crypto.getRandomValues(a);r.textContent=Array.from(a,n=>c[n%c.length]).join('');
+}
+document.getElementById('search').addEventListener('input',function(){
+ const q=this.value.toLocaleLowerCase('sk').trim();let count=0;
+ document.querySelectorAll('.tool').forEach(t=>{const show=(t.dataset.name+' '+t.querySelector('h3').textContent.toLocaleLowerCase('sk')).includes(q);t.hidden=!show;if(show)count++});
+ document.getElementById('empty').style.display=count?'none':'block';
+});
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
+
+
+
+
 
